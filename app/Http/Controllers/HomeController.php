@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Product;
 use Illuminate\Http\Request;
 use Bouncer;
 
@@ -42,5 +43,21 @@ class HomeController extends Controller
         $customers = Customer::all();
 
         return view('customers', compact('customers'));
+    }
+
+    /**
+     * Show all the products.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function products()
+    {
+        if (! Bouncer::is(auth()->user())->an('administrator') && ! Bouncer::can('shop-manager')) {
+            abort(403);
+        }
+
+        $products = Product::all();
+
+        return view('products', compact('products'));
     }
 }

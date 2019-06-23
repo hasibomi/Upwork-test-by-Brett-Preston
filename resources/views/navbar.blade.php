@@ -14,7 +14,7 @@
                 <a class="nav-link" href="{{ route('customers') }}">Customers</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="{{ route('products') }}">Products</a>
             </li>
 
             @if (Route::has('login'))

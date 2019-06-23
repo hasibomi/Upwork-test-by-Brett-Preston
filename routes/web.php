@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('customers', 'HomeController@customers')->name('customers');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('customers', 'HomeController@customers')->name('customers');
+    Route::get('products', 'HomeController@products')->name('products');
+});
 
 Auth::routes();
