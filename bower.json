@@ -1,0 +1,23 @@
+{
+  "name": "upwork-test-by-brett-preston",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Hasibur Rahman Omi <hrahmanomi@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/hasibomi/Upwork-test-by-Brett-Preston",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "3.4.1",
+    "bootstrap": "4.3.1",
+    "datatables.net-bs4": "^3.2.2"
+  }
+}
