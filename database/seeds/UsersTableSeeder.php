@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         Bouncer::assign('administrator')->to($admin);
-        Bouncer::allow($userManager)->to('users');
-        Bouncer::allow($shopManager)->to('products-orders');
+        Bouncer::allow($userManager)->to('user-manager');
+        Bouncer::allow($shopManager)->to('shop-manager');
     }
 }

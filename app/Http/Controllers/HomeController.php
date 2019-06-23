@@ -35,7 +35,7 @@ class HomeController extends Controller
      */
     public function customers()
     {
-        if (! Bouncer::is(auth()->user())->an('administrator') && ! Bouncer::can('users')) {
+        if (! Bouncer::is(auth()->user())->an('administrator') && ! Bouncer::can('user-manager')) {
             abort(403);
         }
 
