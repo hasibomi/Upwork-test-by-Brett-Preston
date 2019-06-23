@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('customers', 'HomeController@customers')->name('customers');
+
+Auth::routes();
