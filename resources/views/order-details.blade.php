@@ -26,6 +26,11 @@
                             <td>Total Order Items</td>
                             <td>{{ count($order->orderItems) }}</td>
                         </tr>
+
+                        <tr>
+                            <td>Total Amount</td>
+                            <td>$ {{ $order->total_amount }}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
