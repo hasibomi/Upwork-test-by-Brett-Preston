@@ -30,7 +30,7 @@
                             <td>{{ $order->customer->name }}</td>
                             <td>£ {{ $order->total_amount }}</td>
                             <td>{{ $order->status }}</td>
-                            <td><a href="{{ route('orders.details', $order->invoice_number) }}">View</a></td>
+                            <td><a href="{{ route('orders.details', $order->invoice_number) }}" target="_blank">View</a></td>
                         </tr>
                     @endforeach
                     </tbody>
