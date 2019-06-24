@@ -29,7 +29,7 @@
 
                         <tr>
                             <td>Total Amount</td>
-                            <td>$ {{ $order->total_amount }}</td>
+                            <td>£ {{ $order->total_amount }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -56,7 +56,7 @@
                                 <td>{{ $i + 1 }}</td>
                                 <td>{{ $item->product->name }}</td>
                                 <td>{{ $item->quantity }}</td>
-                                <td>$ {{ $item->quantity *  $item->product->price }}</td>
+                                <td>£ {{ $item->quantity *  $item->product->price }}</td>
                             </tr>
                         @endforeach
                     </tbody>

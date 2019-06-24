@@ -28,7 +28,7 @@
                             <td>{{ $i + 1 }}</td>
                             <td>{{ $order->invoice_number }}</td>
                             <td>{{ $order->customer->name }}</td>
-                            <td>$ {{ $order->total_amount }}</td>
+                            <td>£ {{ $order->total_amount }}</td>
                             <td>{{ $order->status }}</td>
                             <td><a href="{{ route('orders.details', $order->invoice_number) }}">View</a></td>
                         </tr>

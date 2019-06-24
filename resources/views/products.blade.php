@@ -25,7 +25,7 @@
                             <tr>
                                 <td>{{ $i + 1 }}</td>
                                 <td>{{ $product->name }}</td>
-                                <td>$ {{ $product->price }}</td>
+                                <td>£ {{ $product->price }}</td>
                                 <td>
                                     @if ($product->in_stock)
                                         <input type="checkbox" checked disabled>
