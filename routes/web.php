@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('customers', 'HomeController@customers')->name('customers');
     Route::get('products', 'HomeController@products')->name('products');
+    Route::get('api/products', 'HomeController@apiProducts')->name('api.products');
     Route::get('orders', 'HomeController@orders')->name('orders');
     Route::get('orders/{invoiceNumber}', 'HomeController@orderDetails')->name('orders.details');
 });

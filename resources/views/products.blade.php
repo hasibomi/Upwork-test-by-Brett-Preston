@@ -8,6 +8,19 @@
 
 @section('content')
     <div class="row">
+        <div class="col-md-4">
+            <p>
+                <label for="filter">Filter: </label>
+
+                <select id="filter" class="form-control">
+                    <option value="">All Products</option>
+                    <option value="1">In Stock</option>
+                    <option value="0">Out of Stock</option>
+                </select>
+            </p>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover" id="products-table">
@@ -30,7 +43,7 @@
                                     @if ($product->in_stock)
                                         <input type="checkbox" checked disabled>
                                     @else
-                                        <input type="checkbox">
+                                        <input type="checkbox" disabled>
                                     @endif
                                 </td>
                             </tr>
@@ -48,10 +61,48 @@
     <script>
         $(document).ready(function() {
             $('#products-table').DataTable({
+                destroy: true,
                 columnDefs: [{
                     'targets': [3],
                     'orderable': false,
-                }]
+                }],
+            });
+
+            $('#filter').change(function () {
+                var value = $(this).val();
+
+                $('#products-table').DataTable({
+                    destroy: true,
+                    ajax: {
+                        url: "{{ route('api.products') . '?filter_stock=' }}" + value,
+                        dataSrc: function (data) {
+                            var return_data = [];
+
+                            for(var i=0;i< data.results.length; i++){
+                                var r = data.results[i];
+
+                                return_data.push({
+                                    'id': r.id,
+                                    'name': r.name,
+                                    'price': '£ ' + r.price,
+                                    'in_stock' : r.in_stock ? '<input type="checkbox" checked disabled>' : '<input type="checkbox" disabled>'
+                                })
+                            }
+
+                            return return_data;
+                        }
+                    },
+                    columns: [
+                        {data: 'id'},
+                        {data: 'name'},
+                        {data: 'price'},
+                        {data: 'in_stock'},
+                    ],
+                    columnDefs: [{
+                        'targets': [3],
+                        'orderable': false,
+                    }],
+                });
             });
         });
     </script>
