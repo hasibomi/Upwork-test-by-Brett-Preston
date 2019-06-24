@@ -40,7 +40,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="customers-table">
+                <table class="table table-bordered table-hover" id="order-details-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -71,7 +71,7 @@
     <script src="{{ asset('vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#customers-table').DataTable();
+            $('#order-details-table').DataTable();
         });
     </script>
 @endsection
