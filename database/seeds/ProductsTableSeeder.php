@@ -11,6 +11,8 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+        \DB::table('products')->truncate();
+
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 100; $i++) {

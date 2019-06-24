@@ -11,6 +11,8 @@ class CustomersTableSeeder extends Seeder
      */
     public function run()
     {
+        \DB::table('customers')->truncate();
+
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 200; $i++) {
