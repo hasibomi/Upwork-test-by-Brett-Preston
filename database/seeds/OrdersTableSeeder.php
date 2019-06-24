@@ -11,6 +11,9 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
+        \DB::table('orders')->truncate();
+        \DB::table('order_items')->truncate();
+
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 50; $i++) {
@@ -26,7 +29,7 @@ class OrdersTableSeeder extends Seeder
 
             for ($j = 0; $j < 5; $j++) {
                 $quantity = $faker->numberBetween(1, 3);
-                $product = \App\Product::find($i + 1);
+                $product = \App\Product::find($j + 1);
 
                 $order->orderItems()->create([
                     'product_id' => $product->id,
