@@ -15,11 +15,13 @@ class OrdersTableSeeder extends Seeder
 
         for ($i = 0; $i < 50; $i++) {
             $total_amount = [];
+            $customer = \App\Customer::find($i + 1);
 
             $order = \App\Order::create([
                 'invoice_number' => $faker->numberBetween(1000, 9000),
                 'total_amount' => 0.00,
-                'status' => $faker->randomElement(['new', 'processed'])
+                'status' => $faker->randomElement(['new', 'processed']),
+                'customer_id' => $customer->id
             ]);
 
             for ($j = 0; $j < 5; $j++) {
