@@ -81,6 +81,7 @@ class HomeController extends Controller
     /**
      * Show details of the specified order.
      *
+     * @param $invoiceNumber
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function orderDetails($invoiceNumber)
@@ -94,6 +95,8 @@ class HomeController extends Controller
         if (is_null($order)) {
             abort(404);
         }
+
+        activity()->log(auth()->user()->name . ' processed the order: ' . $order->id);
 
         return view('order-details', compact('order'));
     }
