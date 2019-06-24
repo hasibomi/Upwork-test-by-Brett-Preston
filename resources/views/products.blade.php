@@ -47,7 +47,12 @@
     <script src="{{ asset('vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#products-table').DataTable();
+            $('#products-table').DataTable({
+                columnDefs: [{
+                    'targets': [3],
+                    'orderable': false,
+                }]
+            });
         });
     </script>
 @endsection
