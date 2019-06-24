@@ -70,17 +70,21 @@ class HomeController extends Controller
      */
     public function apiProducts(Request $request)
     {
-        if (! Bouncer::is(auth()->user())->an('administrator') && ! Bouncer::can('shop-manager')) {
-            return response()->json(['status' => 'error', 'message' => '403 forbidden'], 403);
+        if ($request->ajax()) {
+            if (! Bouncer::is(auth()->user())->an('administrator') && ! Bouncer::can('shop-manager')) {
+                return response()->json(['status' => 'error', 'message' => '403 forbidden'], 403);
+            }
+
+            if ($request->has('filter_stock') && $request->get('filter_stock') != '') {
+                $products = Product::where('in_stock', $request->get('filter_stock'))->get();
+            } else {
+                $products = Product::all();
+            }
+
+            return response()->json(['status' => 'success', 'results' => $products]);
         }
 
-        if ($request->has('filter_stock') && $request->get('filter_stock') != '') {
-            $products = Product::where('in_stock', $request->get('filter_stock'))->get();
-        } else {
-            $products = Product::all();
-        }
-
-        return response()->json(['status' => 'success', 'results' => $products]);
+        return response()->json(['status' => 'error', 'message' => 'Ahh, i feel sorry for you!'], 403);
     }
 
     /**
